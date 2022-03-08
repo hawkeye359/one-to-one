@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="main-heading">
+      p2p messaging service
+      <i class="tooltip" id="status"><span class="tooltiptext">online</span></i>
+    </h1>
+
+    <div class="connect">
+      <div class="buttons">
+        <button id="offer-button">offer</button>
+        <button id="answer-button">answer</button>
+      </div>
+      <div>connection: <span id="connection">closed</span></div>
+      <div id="local-sdp"></div>
+      <input id="remote-sdp" type="text" />
+      <button id="connect">connect</button>
+    </div>
+    <div id="messages"></div>
+    <div id="message-form">
+      <input id="actual-message" type="text" />
+      <button id="send">send</button>
+    </div>
+  </body>
+</html>
