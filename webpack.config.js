@@ -3,17 +3,18 @@ const ClearnTerminal = require("clean-terminal-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const webpack = require("webpack");
 module.exports = {
-  entry: "./src/renderer.js",
+  entry: "./src/renderer.tsx",
   devtool: "source-map",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].js",
     clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: "babel-loader",
@@ -21,7 +22,6 @@ module.exports = {
               presets: ["@babel/preset-env"],
             },
           },
-          "ts-loader",
         ],
       },
       {
@@ -38,16 +38,23 @@ module.exports = {
       },
     ],
   },
-  //   resolve: {
-  //     extensions: [".tsx", ".ts", "..."],
-  //   },
+  resolve: {
+    extensions: [".tsx", ".ts", ".jsx", "..."],
+  },
+  externals: {
+    sqlite3: "commonjs sqlite3",
+    knex: "commonjs knex",
+    path: "commonjs path",
+    fs: "commonjs fs",
+    remote: "commonjs remote",
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       inject: "body",
       filename: "index.html",
     }),
-    new ClearnTerminal(),
+    // new ClearnTerminal(),
   ],
   // devServer: {
   //   // liveReload: false,
@@ -55,7 +62,7 @@ module.exports = {
   //   watchFiles: ["./src/*"],
   // },
   devServer: {
-    static: "./dist",
+    static: "./build",
     devMiddleware: {
       // writeToDisk: true,
     },
