@@ -13,7 +13,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|tsx)$/,
+        test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
         use: [
           {
@@ -47,6 +47,7 @@ module.exports = {
     path: "commonjs path",
     fs: "commonjs fs",
     remote: "commonjs remote",
+    "@electron/remote": "commonjs @electron/remote",
   },
   plugins: [
     new HtmlWebpackPlugin({

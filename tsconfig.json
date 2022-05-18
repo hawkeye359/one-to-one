@@ -8,5 +8,5 @@
     "skipLibCheck": true,
     "jsx": "preserve"
   },
-  "include": ["src/**/*.tsx", "src/**/*.ts"]
+  "include": ["src/**/*.tsx", "src/**/*.ts", "lib/**/*."]
 }

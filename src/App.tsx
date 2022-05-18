@@ -61,7 +61,7 @@ function App(): React.FunctionComponentElement<{}> {
   };
 
   const makeOffer = async function () {
-    lc = RTC.createInstance("offer");
+    lc = RTC.getInstance("offer");
     RTC.getDataChannel().then((dataChannel: RTCDataChannel) => {
       console.log("promise resolved");
       dc = dataChannel;
@@ -92,7 +92,7 @@ function App(): React.FunctionComponentElement<{}> {
     dispatchMessage({ type: "SENT", message: message });
   };
   const makeAnswer = () => {
-    lc = RTC.createInstance("answer");
+    lc = RTC.getInstance("answer");
     RTC.getDataChannel().then((dataChannel: RTCDataChannel) => {
       dc = dataChannel;
       dc.onopen = () => {

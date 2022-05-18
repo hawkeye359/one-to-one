@@ -1,8 +1,8 @@
 class RTC {
-  static type = null;
-  static RTCinstance = null;
-  static DataChannel = null;
-  static createInstance = (type) => {
+  private static type: "offer" | "answer";
+  private static RTCinstance: RTCPeerConnection;
+  private static DataChannel: RTCDataChannel;
+  static getInstance = (type: "offer" | "answer"): RTCPeerConnection => {
     if (RTC.RTCinstance) {
       return RTC.RTCinstance;
     }
@@ -10,7 +10,7 @@ class RTC {
     RTC.RTCinstance = new RTCPeerConnection();
     return RTC.RTCinstance;
   };
-  static getDataChannel = () => {
+  static getDataChannel: () => Promise<RTCDataChannel> = () => {
     return new Promise((res) => {
       if (RTC.DataChannel) {
         res(RTC.DataChannel);

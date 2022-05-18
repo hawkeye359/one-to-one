@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require("electron");
+const { nativeTheme } = "electron";
 const path = require("path");
 let localStream = null;
 let remoteStream = null;
